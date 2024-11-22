@@ -1,0 +1,116 @@
+/* Contenedor principal */
+.login-container {
+    display: flex;
+    flex-direction: column; /* Organiza los elementos en columna */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    margin: 0;
+}
+
+/* Título ToniFlix */
+.toniflix-header {
+    margin-bottom: 40px; /* Espaciado entre el título y el formulario */
+    text-align: center;
+}
+
+.toniflix-title {
+    font-size: 52px;
+    font-weight: bold;
+    color: var(--primary-color); /* Rojo Netflix */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+/* Formulario */
+.login-form {
+    background-color: var(--secondary-color); /* Fondo negro intenso */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+/* Título del formulario */
+.login-title {
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+}
+
+/* Campos de entrada */
+.login-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-background);
+    color: var(--text-color);
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.login-input:focus {
+    border-color: var(--primary-color);
+    background-color: #444444;
+    box-shadow: 0 0 5px rgba(229, 9, 20, 0.5);
+}
+
+/* Botones */
+.login-button {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: var(--hover-color);
+}
+
+/* Mensajes de error */
+.error-message {
+    color: var(--error-color);
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Texto de alternar formulario */
+.toggle-text {
+    font-size: 14px;
+    color: var(--text-secondary-color);
+    text-align: center;
+    margin-top: 10px;
+}
+
+.toggle-link {
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.toggle-link:hover {
+    color: var(--hover-color);
+}
+
+/* Pie del formulario */
+.form-footer {
+    margin-top: 20px;
+}
