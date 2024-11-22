@@ -7,7 +7,10 @@ import MainPage from './components/User/MainPage';
 import AdminPage from './components/Admin/AdminPage';
 import AddActor from './components/Admin/AddActor';
 import AddContent from './components/Admin/AddContent';
-import AddDirectorctor from './components/Admin/AddDirector';
+import AddDirector from './components/Admin/AddDirector';
+import ModifyContent from './components/Admin/ModifyContent';
+import ModifyActor from './components/Admin/ModifyActor';
+import ModifyDirector from './components/Admin/ModifyDirector';
 
 
 import AdminRoute from './components/AdminRoute'; // Rutas de admin
@@ -80,6 +83,33 @@ function App() {
                         element={
                             <AdminRoute>
                                 <AddDirector />
+                            </AdminRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/admin/modify-content"
+                        element={
+                            <AdminRoute>
+                                <ModifyContent />
+                            </AdminRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/admin/modify-actor"
+                        element={
+                            <AdminRoute>
+                                <ModifyActor />
+                            </AdminRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/admin/modify-director"
+                        element={
+                            <AdminRoute>
+                                <ModifyDirector />
                             </AdminRoute>
                         }
                     />
