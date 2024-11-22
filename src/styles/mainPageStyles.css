@@ -1,0 +1,223 @@
+/* Main Page Styles */
+.main-page {
+    background-color: #141414;
+    color: white;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    padding-top: 70px; /* To account for NavBar */
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Section Titles */
+h1 {
+    text-align: center;
+    color: #e50914; /* Netflix Red */
+    margin-bottom: 15px;
+    font-size:40px;
+}
+h2{
+    text-align: center;
+    color: #ffffff; /* Netflix Red */
+    margin-bottom: 15px;
+    margin-top: 25px;
+
+}
+
+/* Search Section */
+.search-section {
+    background-color: rgba(20, 20, 20, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.search-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.search-controls input,
+.search-controls select {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.button-group button {
+    padding: 10px 15px;
+    background-color: #e50914;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0;
+}
+
+.button-group button:hover {
+    background-color: #630007;
+}
+
+/* Content Sections */
+.content-section {
+    margin-bottom: 30px;
+}
+
+/* Main Content Grid */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajustar columnas automáticamente */
+    gap: 20px; /* Espaciado entre tarjetas */
+    justify-content: center; /* Centrar las tarjetas en el contenedor */
+    padding: 40px 0;
+    justify-items: center; /* Asegura que las cartas estén centradas */
+    align-items: center;
+}
+
+/* Individual Content Card */
+.card {
+    width: 250px; /* Tamaño fijo para todas las cartas */
+    height: 200px; /* Tamaño fijo para todas las cartas */
+    background-color: #222;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Distribuye contenido dentro de la tarjeta */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Title of the Card */
+.card h3 {
+    font-size: 18px;
+    color: #e50914; /* Netflix Red */
+    margin-bottom: 10px;
+    white-space: nowrap; /* No permite saltos de línea */
+    overflow: hidden; /* Oculta el texto desbordado */
+    text-overflow: ellipsis; /* Añade "..." si el texto es demasiado largo */
+    width: 100%; /* Asegura que el truncamiento funcione correctamente */
+}
+
+/* Description in the Card */
+.card p {
+    font-size: 14px;
+    color: #b3b3b3;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    max-height: 3.6em; /* Limita la altura del texto */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    flex-grow: 1; /* Hace que la descripción ocupe el espacio restante */
+    display: -webkit-box; /* Permite truncar texto con puntos suspensivos en varias líneas */
+    -webkit-line-clamp: 3; /* Máximo de 3 líneas */
+    -webkit-box-orient: vertical;
+}
+
+/* Watch Button */
+.card button {
+    background-color: #e50914; /* Netflix Red */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+    background-color: #750208;
+}
+
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Container for all checkboxes */
+.genre-checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Individual checkbox item */
+.genre-checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* Custom styled checkbox */
+.genre-checkbox-item input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #e50914;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    position: relative;
+}
+
+/* Hover effect for checkbox */
+.genre-checkbox-item input[type="checkbox"]:hover {
+    border-color: #b0000f;
+}
+
+/* Checked state */
+.genre-checkbox-item input[type="checkbox"]:checked {
+    background-color: #e50914;
+    border-color: #e50914;
+}
+
+.genre-checkbox-item input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 2px;
+    transform: translate(-50%, -50%);
+}
+
+/* Label for the checkbox */
+.genre-checkbox-item label {
+    font-size: 14px;
+    color: #e50914;
+    cursor: pointer;
+    user-select: none;
+}
