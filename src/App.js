@@ -17,6 +17,7 @@ import DeleteDirector from './components/Admin/DeleteDirector';
 import DeleteUser from './components/Admin/DeleteUser';
 import ShowUsers from './components/Admin/ShowUsers';
 import ContentDetails from './components/User/ContentDetails';
+import ShowActor from './components/Admin/ShowActor';
 
 
 import AdminRoute from './components/AdminRoute'; // Rutas de admin
@@ -171,6 +172,14 @@ function App() {
                             <ProtectedRoute>
                                 <ContentDetails />
                             </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/admin/show-actor"
+                        element={
+                            <AdminRoute>
+                                <ShowActor />
+                            </AdminRoute>
                         }
                     />
 
