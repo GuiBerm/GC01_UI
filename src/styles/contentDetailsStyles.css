@@ -1,0 +1,217 @@
+/* Contenedor principal */
+.containerLessPadding {
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #141414; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Sombra para el contenedor */
+    position: relative;
+    top: 0; /* Asegura que esté justo después del NavBar */
+    z-index: 1;
+    margin-top: 90px; /* Añade espacio debajo del NavBar */
+}
+
+/* Título del contenido */
+.containerLessPadding h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #e50914; /* Rojo estilo Netflix */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Detalles del contenido */
+.details-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Ajuste para pantallas pequeñas */
+    margin-bottom: 30px; /* Separación adicional */
+    gap: 20px; /* Espacio entre columnas */
+    padding-bottom: 10px; /* Espacio interior */
+    border-bottom: 2px solid #333; /* Línea divisoria */
+}
+
+.details-left,
+.details-right {
+    width: 45%; /* Ajustar la proporción de cada lado */
+}
+
+.details-left p,
+.details-right p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 10px 0;
+    color: #b3b3b3; /* Gris claro */
+}
+
+/* Descripción del contenido */
+.content-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 30px; /* Separación adicional */
+    color: #d9d9d9; /* Gris claro */
+    padding: 10px;
+    background-color: #1a1a1a; /* Fondo para destacar */
+    border-radius: 8px;
+}
+
+/* Botones */
+.button-group {
+    display: flex;
+    gap: 15px; /* Más espacio entre botones */
+    flex-wrap: wrap;
+    margin-bottom: 30px; /* Separación adicional */
+    justify-content: center;
+}
+
+.button-group button {
+    background-color: #e50914; /* Fondo rojo estilo Netflix */
+    color: #ffffff; /* Texto blanco */
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.button-group button:hover {
+    background-color: #f40612; /* Rojo más claro */
+    transform: scale(1.05); /* Efecto de escala */
+}
+
+/* Sección de reseñas */
+.review-section {
+    background-color: #1f1f1f; /* Fondo oscuro para la sección */
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px; /* Separación adicional */
+    margin-bottom: 30px; /* Separación con otras secciones */
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.4); /* Sombra */
+}
+
+.review-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #ffffff; /* Blanco */
+    text-align: center;
+}
+
+.review-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Asegurar buen diseño en pantallas pequeñas */
+    margin-bottom: 15px; /* Separación entre inputs y botones */
+}
+
+.review-input input {
+    width: 50%; /* Ajuste al 50% del contenedor */
+    padding: 8px;
+    border: 1px solid #555; /* Borde gris oscuro */
+    border-radius: 4px;
+    background-color: #333; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.review-buttons {
+    display: flex;
+    gap: 15px; /* Más espacio entre botones */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.review-buttons button {
+    background-color: #444; /* Fondo gris oscuro */
+    color: #fff; /* Texto blanco */
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.review-buttons button:hover {
+    background-color: #666; /* Fondo gris más claro */
+}
+
+/* Sección de todas las reseñas */
+.all-reviews {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px; /* Separación adicional */
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.4); /* Sombra */
+}
+
+.all-reviews h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #ffffff; /* Blanco */
+    text-align: center;
+}
+
+.all-reviews ul {
+    list-style-type: none; /* Sin puntos en la lista */
+    padding: 0;
+    margin: 0;
+}
+
+.all-reviews li {
+    font-size: 1rem;
+    color: #d9d9d9;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.all-reviews li:last-child {
+    border-bottom: none; /* Sin borde para el último elemento */
+}
+
+/* Notificaciones */
+.notification {
+    background-color: #e50914;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeInOut 3s ease-in-out;
+}
+
+/* Animación para notificaciones */
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0;
+    }
+    10%, 90% {
+        opacity: 1;
+    }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .details-left, .details-right {
+        width: 100%;
+        text-align: center;
+    }
+
+    .button-group, .review-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .review-input input {
+        width: 100%;
+    }
+}
