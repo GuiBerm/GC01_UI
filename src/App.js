@@ -5,6 +5,10 @@ import Logout from './components/Logout';
 import ProfileSelection from './components/User/ProfileSelection';
 import MainPage from './components/User/MainPage';
 import AdminPage from './components/Admin/AdminPage';
+import AddActor from './components/Admin/AddActor';
+import AddContent from './components/Admin/AddContent';
+import AddDirectorctor from './components/Admin/AddDirector';
+
 
 import AdminRoute from './components/AdminRoute'; // Rutas de admin
 import ProtectedRoute from './components/ProtectedRoute'; // Rutas protegidas
@@ -52,6 +56,30 @@ function App() {
                         element={
                             <AdminRoute>
                                 <AdminPage />
+                            </AdminRoute>
+                        }
+                    />
+                    <Route
+                        path="/admin/add-content"
+                        element={
+                            <AdminRoute>
+                                <AddContent />
+                            </AdminRoute>
+                        }
+                    />
+                    <Route
+                        path="/admin/add-actor"
+                        element={
+                            <AdminRoute>
+                                <AddActor />
+                            </AdminRoute>
+                        }
+                    />
+                    <Route
+                        path="/admin/add-director"
+                        element={
+                            <AdminRoute>
+                                <AddDirector />
                             </AdminRoute>
                         }
                     />
