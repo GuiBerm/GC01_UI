@@ -165,8 +165,98 @@ function ProfileSelection() {
         }
     };
 
+    const handleEditUser = async () => {
+        try {
+            const updatedUser = {
+                username,
+                contrasena: password,
+                email,
+                rol,
+            };
 
+            await new Promise((resolve, reject) => {
+                usersApi.usersUserIdPut(updatedUser, userId, (error) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve();
+                    }
+                });
+            });
 
+            setEditingUser(false);
+            showNotification('User updated successfully!');
+        } catch (error) {
+            showNotification('Error updating user. Please try again.', 'error');
+            console.error('Error updating user:', error);
+        }
+    };
+
+    const handleDeleteUser = async () => {
+        try {
+            await new Promise((resolve, reject) => {
+                usersApi.usersUserIdDelete(userId, (error) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve();
+                    }
+                });
+            });
+
+            setAuth(null);
+            navigate('/login');
+            showNotification('User deleted successfully!');
+        } catch (error) {
+            showNotification('Error deleting user. Please try again.', 'error');
+            console.error('Error deleting user:', error);
+        }
+    };
+
+    const handleEditProfile = (profile) => {
+        setEditingProfile(profile);
+        setEditingProfileName(profile.name);
+    };
+
+    const handleUpdateProfile = async () => {
+        if (!editingProfileName.trim()) {
+            showNotification('Profile name cannot be empty', 'error');
+            return;
+        }
+
+        try {
+            const updatedProfile = new Profile();
+            updatedProfile.name = editingProfileName;
+            updatedProfile.userId = userId;
+
+            await new Promise((resolve, reject) => {
+                profilesApi.usersUserIdProfilesProfileIdPut(updatedProfile, userId, editingProfile.id, (error) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve();
+                    }
+                });
+            });
+
+            setEditingProfile(null);
+            setEditingProfileName('');
+            const updatedProfiles = await new Promise((resolve, reject) => {
+                profilesApi.usersUserIdProfilesGet(userId, (error, data) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(data);
+                    }
+                });
+            });
+            setProfiles(updatedProfiles);
+            showNotification('Profile updated successfully!');
+        } catch (error) {
+            showNotification('Error updating profile. Please try again.', 'error');
+            console.error('Error updating profile:', error);
+        }
+    };
 
 
     return (
@@ -221,7 +311,53 @@ function ProfileSelection() {
                     </div>
                 ))}
             </div>
-
+            <div className="add-profile-form">
+                <input
+                    type="text"
+                    placeholder="New profile name"
+                    value={newProfileName}
+                    onChange={(e) => setNewProfileName(e.target.value)}
+                    className="add-profile-input"
+                />
+                <button className="add-profile-button" onClick={handleAddProfile}>
+                    Add Profile
+                </button>
+            </div>
+            <div className="user-actions">
+                {!editingUser ? (
+                    <button className="edit-user-button" onClick={() => setEditingUser(true)}>
+                        Edit User
+                    </button>
+                ) : (
+                    <div className="edit-user-form">
+                        <input
+                            type="text"
+                            placeholder="New username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            className="edit-user-input"
+                        />
+                        <input
+                            type="password"
+                            placeholder="New password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="edit-user-input"
+                        />
+                        <div className="form-actions">
+                            <button className="save-user-button" onClick={handleEditUser}>
+                                Save
+                            </button>
+                            <button className="cancel-user-button" onClick={() => setEditingUser(false)}>
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                )}
+                <button className="delete-user-button" onClick={handleDeleteUser}>
+                    Delete User
+                </button>
+            </div>
         </div>
     );
 }
