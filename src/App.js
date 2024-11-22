@@ -18,6 +18,7 @@ import DeleteUser from './components/Admin/DeleteUser';
 import ShowUsers from './components/Admin/ShowUsers';
 import ContentDetails from './components/User/ContentDetails';
 import ShowActor from './components/Admin/ShowActor';
+import ShowDirector from "./components/Admin/ShowDirector";
 
 
 import AdminRoute from './components/AdminRoute'; // Rutas de admin
@@ -179,6 +180,15 @@ function App() {
                         element={
                             <AdminRoute>
                                 <ShowActor />
+                            </AdminRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/admin/show-director"
+                        element={
+                            <AdminRoute>
+                                <ShowDirector />
                             </AdminRoute>
                         }
                     />
