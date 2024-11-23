@@ -47,7 +47,14 @@ function MainPage() {
         });
     }, [contentsApi]);
 
-
+    // Fetch all genres
+    useEffect(() => {
+        contentsApi.getAllGenres((error, data) => {
+            if (!error) {
+                setGenres(data || []);
+            }
+        });
+    }, [contentsApi]);
 
     useEffect(() => {
         if (!userId || !profileId) return;
@@ -121,7 +128,14 @@ function MainPage() {
         });
     };
 
-
+    // Handle genre selection
+    const handleGenreChange = (genre) => {
+        setSelectedGenres((prevGenres) =>
+            prevGenres.includes(genre)
+                ? prevGenres.filter((g) => g !== genre) // Remove genre if already selected
+                : [...prevGenres, genre] // Add genre if not selected
+        );
+    };
 
     return (
         <div className="main-page">
