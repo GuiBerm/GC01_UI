@@ -1,0 +1,92 @@
+/* General container */
+.play-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #141414; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+
+}
+
+/* Header styling */
+.play-header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.back-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #e50914; /* Rojo estilo Netflix */
+}
+
+.content-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: auto;
+}
+
+/* Timer display */
+.play-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer-display {
+    font-size: 72px;
+    font-weight: bold;
+    color: #e50914; /* Rojo estilo Netflix */
+    margin: 20px 0;
+}
+
+/* Control buttons */
+.control-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.play-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #e50914; /* Rojo estilo Netflix */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.play-button:hover {
+    background-color: #f40612;
+    transform: scale(1.05);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .timer-display {
+        font-size: 48px;
+    }
+
+    .play-button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
