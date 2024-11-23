@@ -245,7 +245,45 @@ function ContentDetails() {
 
 
 
+    // Fetch current user's review
+    useEffect(() => {
+        if (!userId || !profileId) {
+            return;
+        }
 
+        const fetchUserReview = async () => {
+            try {
+                const userReviewResponse = await new Promise((resolve, reject) => {
+                    reviewsApi.getNumericReviewForContentByUserAndProfile(parseInt(id), userId, profileId, (error, data) => {
+                        if (error) {
+                            if (error.status === 404) {
+                                // No review from user
+                                setUserRating(null);
+                                setInputRating('');
+                                resolve();
+                            } else {
+                                reject(error);
+                            }
+                        } else {
+                            resolve(data);
+                        }
+                    });
+                });
+
+                if (userReviewResponse && userReviewResponse.rating) {
+                    setUserRating(userReviewResponse.rating);
+                    setInputRating(userReviewResponse.rating);
+                } else {
+                    setUserRating(null);
+                    setInputRating('');
+                }
+            } catch (error) {
+                console.error('Error fetching user review:', error);
+            }
+        };
+
+        fetchUserReview();
+    }, [id, userId, profileId, reviewsApi]);
 
     // Handlers para Play, Favoritos, Watch Later, y Reseñas
     const handlePlay = async () => {
@@ -300,6 +338,7 @@ function ContentDetails() {
         setNotification(message);
         setTimeout(() => setNotification(''), duration); // Remove message after a while
     };
+
 
 
     // Handlers para reviews
