@@ -395,6 +395,34 @@ function ContentDetails() {
         }
     };
 
+    const handleAddToSeeLater = async () => {
+        if (!userId || !profileId) {
+            showNotification('Missing user or profile information.');
+            return;
+        }
+        try {
+            await new Promise((resolve, reject) => {
+                listsApi.usersUserIdProfilesProfileIdListsWatchLaterPost(
+                    parseInt(id),
+                    userId,
+                    profileId,
+                    (error) => {
+                        if (error) {
+                            reject(error);
+                        } else {
+                            resolve();
+                        }
+                    }
+                );
+            });
+            showNotification('Added to Watch Later');
+            setIsInWatchLater(true);
+        } catch (error) {
+            console.error('Error adding to Watch Later:', error);
+            showNotification('Could not add to Watch Later. Please try again.');
+        }
+    };
+
 
 
     // Handlers para reviews
