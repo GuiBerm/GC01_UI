@@ -395,7 +395,61 @@ function ContentDetails() {
         }
     };
 
+    const handleAddToSeeLater = async () => {
+        if (!userId || !profileId) {
+            showNotification('Missing user or profile information.');
+            return;
+        }
+        try {
+            await new Promise((resolve, reject) => {
+                listsApi.usersUserIdProfilesProfileIdListsWatchLaterPost(
+                    parseInt(id),
+                    userId,
+                    profileId,
+                    (error) => {
+                        if (error) {
+                            reject(error);
+                        } else {
+                            resolve();
+                        }
+                    }
+                );
+            });
+            showNotification('Added to Watch Later');
+            setIsInWatchLater(true);
+        } catch (error) {
+            console.error('Error adding to Watch Later:', error);
+            showNotification('Could not add to Watch Later. Please try again.');
+        }
+    };
 
+    const handleRemoveFromSeeLater = async () => {
+        if (!userId || !profileId) {
+            showNotification('Missing user or profile information.');
+            return;
+        }
+        try {
+            await new Promise((resolve, reject) => {
+                listsApi.usersUserIdProfilesProfileIdListsWatchLaterContentIdDelete(
+                    userId,
+                    profileId,
+                    parseInt(id),
+                    (error) => {
+                        if (error) {
+                            reject(error);
+                        } else {
+                            resolve();
+                        }
+                    }
+                );
+            });
+            showNotification('Removed from Watch Later');
+            setIsInWatchLater(false);
+        } catch (error) {
+            console.error('Error removing from Watch Later:', error);
+            showNotification('Could not remove from Watch Later. Please try again.');
+        }
+    };
 
     // Handlers para reviews
     const handleAddOrUpdateReview = async () => {
