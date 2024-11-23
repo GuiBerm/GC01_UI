@@ -1,0 +1,59 @@
+/* Variables de colores basadas en la temática de Netflix */
+:root {
+    --primary-color: #e50914; /* Rojo Netflix */
+    --secondary-color: #141414; /* Negro intenso */
+    --text-color: #ffffff; /* Blanco para texto */
+    --text-secondary-color: #b3b3b3; /* Gris claro */
+    --background-color: #000000; /* Negro puro */
+    --input-background: #333333; /* Fondo de los inputs */
+    --border-color: #444444; /* Bordes suaves */
+    --hover-color: #630009; /* Rojo más brillante */
+    --error-color: #ffa00a; /* Amarillo para errores */
+}
+
+/* Reset general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Configuración general */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh; /* Asegura que el body cubra la pantalla completa */
+}
+
+/* Contenedor principal */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Asegura que el contenido esté alineado al inicio */
+    justify-content: flex-start; /* Evita centrar verticalmente todo el contenido */
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px; /* Espaciado general */
+}
+
+/* Enlaces generales */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--hover-color);
+}
+
+/* Botones generales */
+button {
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+}
