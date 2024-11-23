@@ -19,6 +19,8 @@ import ShowUsers from './components/Admin/ShowUsers';
 import ContentDetails from './components/User/ContentDetails';
 import ShowActor from './components/Admin/ShowActor';
 import ShowDirector from "./components/Admin/ShowDirector";
+import PlayPage from './components/User/PlayPage';
+
 
 
 import AdminRoute from './components/AdminRoute'; // Rutas de admin
@@ -190,6 +192,14 @@ function App() {
                             <AdminRoute>
                                 <ShowDirector />
                             </AdminRoute>
+                        }
+                    />
+                    <Route
+                        path="/play/:id"
+                        element={
+                            <ProtectedRoute>
+                                <PlayPage />
+                            </ProtectedRoute>
                         }
                     />
 
