@@ -1,0 +1,40 @@
+name: Integración Continua para frontend
+
+on:
+  push:
+    branches:
+      - '**'       # Todas las ramas
+  pull_request:
+    branches:
+      - '**'       # Todas las ramas
+  workflow_dispatch:    # Permite ejecutar el workflow manualmente
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout del código
+      - name: Checkout del código
+        uses: actions/checkout@v4  # Actualizado a v4
+
+      # 2. Configurar Node.js
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4  # Actualizado a v4
+        with:
+          node-version: '20.x'      # Usar Node.js v20.x
+          cache: 'npm'
+
+      # 3. Verificar versiones de Node.js y npm
+      - name: Verificar versiones de Node.js y npm
+        run: |
+          node -v
+          npm -v
+
+      # 4. Instalar dependencias
+      - name: Instalar dependencias
+        run: npm ci
+
+      # 5. Construir la aplicación
+      - name: Construir la aplicación
+        run: npm run build
