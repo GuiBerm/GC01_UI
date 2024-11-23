@@ -20,6 +20,8 @@ import ContentDetails from './components/User/ContentDetails';
 import ShowActor from './components/Admin/ShowActor';
 import ShowDirector from "./components/Admin/ShowDirector";
 import PlayPage from './components/User/PlayPage';
+import SearchPage from './components/User/SearchPage'; // Importar la nueva página
+
 
 
 
@@ -199,6 +201,15 @@ function App() {
                         element={
                             <ProtectedRoute>
                                 <PlayPage />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/user/search"
+                        element={
+                            <ProtectedRoute>
+                                <SearchPage />
                             </ProtectedRoute>
                         }
                     />
