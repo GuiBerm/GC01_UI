@@ -165,6 +165,7 @@ export default class ApiClient {
     * @returns {Boolean} <code>true</code> if <code>param</code> represents a file.
     */
     isFileParam(param) {
+        /*
         // fs.ReadStream in Node.js and Electron (but not in runtime like browserify)
         if (typeof require === 'function') {
             let fs;
@@ -179,7 +180,7 @@ export default class ApiClient {
         // Buffer in Node.js
         if (typeof Buffer === 'function' && param instanceof Buffer) {
             return true;
-        }
+        }*/
 
         // Blob in browser
         if (typeof Blob === 'function' && param instanceof Blob) {
