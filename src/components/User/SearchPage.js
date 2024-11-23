@@ -39,7 +39,19 @@ function SearchPage() {
         }
     }, []);
 
-
+    // Fetch all genres if not provided
+    useEffect(() => {
+        if (!initialGenres.length) {
+            contentsApi.getAllGenres((error, data) => {
+                if (error) {
+                    console.error('Error fetching genres:', error);
+                    setErrorMessage('Error fetching genres.');
+                } else {
+                    setGenres(data || []);
+                }
+            });
+        }
+    }, []);
 
 // Handle search action
     const handleSearch = () => {
