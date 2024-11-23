@@ -339,6 +339,62 @@ function ContentDetails() {
         setTimeout(() => setNotification(''), duration); // Remove message after a while
     };
 
+    const handleAddToFavorites = async () => {
+        if (!userId || !profileId) {
+            showNotification('Missing user or profile information.');
+            return;
+        }
+        try {
+            await new Promise((resolve, reject) => {
+                listsApi.usersUserIdProfilesProfileIdListsFavoritesPost(
+                    parseInt(id),
+                    userId,
+                    profileId,
+                    (error) => {
+                        if (error) {
+                            reject(error);
+                        } else {
+                            resolve();
+                        }
+                    }
+                );
+            });
+            showNotification('Added to Favorites');
+            setIsInFavorites(true);
+        } catch (error) {
+            console.error('Error adding to Favorites:', error);
+            showNotification('Could not add to Favorites. Please try again.');
+        }
+    };
+
+    const handleRemoveFromFavorites = async () => {
+        if (!userId || !profileId) {
+            showNotification('Missing user or profile information.');
+            return;
+        }
+        try {
+            await new Promise((resolve, reject) => {
+                listsApi.usersUserIdProfilesProfileIdListsFavoritesContentIdDelete(
+                    userId,
+                    profileId,
+                    parseInt(id),
+                    (error) => {
+                        if (error) {
+                            reject(error);
+                        } else {
+                            resolve();
+                        }
+                    }
+                );
+            });
+            showNotification('Removed from Favorites');
+            setIsInFavorites(false);
+        } catch (error) {
+            console.error('Error removing from Favorites:', error);
+            showNotification('Could not remove from Favorites. Please try again.');
+        }
+    };
+
 
 
     // Handlers para reviews
