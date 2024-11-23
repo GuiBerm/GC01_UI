@@ -293,7 +293,19 @@ function MainPage() {
                         ))}
                     </div>
                 </section>
-
+                <section className="content-section">
+                    <h2>Recently Watched</h2>
+                    <div className="content-grid">
+                        {recentlyWatched.map(content => (
+                            <ContentCard
+                                key={content.id}
+                                id={content.id}
+                                title={content.title}
+                                synopsis={content.synopsis || 'No description available'}
+                            />
+                        ))}
+                    </div>
+                </section>
 
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
             </div>
