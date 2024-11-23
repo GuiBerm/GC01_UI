@@ -243,7 +243,51 @@ function ContentDetails() {
         fetchViewCount();
     }, [id, viewsApi]);
 
+    // Check if content is in favorites and watch later lists
+    useEffect(() => {
+        if (!userId || !profileId) {
+            return;
+        }
 
+        const fetchLists = async () => {
+            try {
+                // Get Favorites list
+                const favorites = await new Promise((resolve, reject) => {
+                    listsApi.usersUserIdProfilesProfileIdListsFavoritesGet(userId, profileId, (error, data) => {
+                        if (error) {
+                            reject(error);
+                        } else {
+                            resolve(data);
+                        }
+                    });
+                });
+
+                // Check if content is in Favorites
+                const isFavorite = favorites.includes(parseInt(id));
+                setIsInFavorites(isFavorite);
+
+                // Get Watch Later list
+                const watchLater = await new Promise((resolve, reject) => {
+                    listsApi.usersUserIdProfilesProfileIdListsWatchLaterGet(userId, profileId, (error, data) => {
+                        if (error) {
+                            reject(error);
+                        } else {
+                            resolve(data);
+                        }
+                    });
+                });
+
+                // Check if content is in Watch Later
+                const isInWatchLaterList = watchLater.includes(parseInt(id));
+                setIsInWatchLater(isInWatchLaterList);
+
+            } catch (error) {
+                console.error('Error fetching lists:', error);
+            }
+        };
+
+        fetchLists();
+    }, [userId, profileId, id, listsApi]);
 
     // Fetch current user's review
     useEffect(() => {
