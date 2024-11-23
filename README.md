@@ -17,7 +17,7 @@ Asegúrate de tener instalados los siguientes componentes en tu máquina:
 
    ```bash
    git clone <URL_DEL_REPOSITORIO>
-   cd ui_asee
+   cd GC01_UI
    ```
 
 2. **Instalar dependencias**
