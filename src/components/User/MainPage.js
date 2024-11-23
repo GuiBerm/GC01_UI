@@ -118,6 +118,52 @@ function MainPage() {
 
 
 
+    useEffect(() => {
+        if (!profileId) return;
+
+        const fetchRecommendations = async () => {
+            try {
+                // Obtener las recomendaciones básicas
+                const data = await new Promise((resolve, reject) => {
+                    miscApi.getRecommendationsForUser(userId, profileId, (error, data) => {
+                        if (error) {
+                            reject(error);
+                        } else {
+                            resolve(data);
+                        }
+                    });
+                });
+
+                const basicRecommendations = data.recommendations || [];
+
+                // Obtener detalles completos para cada recomendación
+                const fullRecommendations = await Promise.all(
+                    basicRecommendations.map(rec =>
+                        new Promise((resolve, reject) => {
+                            contentsApi.getContentById(parseInt(rec.contentId), (error, contentData) => {
+                                if (error) {
+                                    console.error(`Error fetching content with ID ${rec.id}:`, error);
+                                    // Resolver con los datos básicos si falla la obtención completa
+                                    resolve(rec);
+                                } else {
+                                    resolve(contentData);
+                                }
+                            });
+                        })
+                    )
+                );
+
+                setRecommendations(fullRecommendations);
+                console.log(fullRecommendations);
+            } catch (error) {
+                console.error('Error fetching recommendations:', error);
+                setErrorMessage('Error fetching recommendations. Please try again later.');
+            }
+        };
+
+        fetchRecommendations();
+        console.log(recommendations);
+    }, [userId, profileId, miscApi, contentsApi]);
 
     const handleSearch = () => {
         navigate('/user/search', {
@@ -204,7 +250,21 @@ function MainPage() {
                     </div>
                 </section>
 
+                {/* Recommendations */}
+                <section className="content-section">
+                    <h2>Recommendations</h2>
+                    <div className="content-grid">
+                        {recommendations.map(content => (
+                            <ContentCard
+                                key={parseInt(content.id)}
+                                id={content.id}
+                                title={content.title}
+                                synopsis={content.synopsis || 'No description available'}
 
+                            />
+                        ))}
+                    </div>
+                </section>
 
                 {/* User Lists */}
                 <section className="content-section">

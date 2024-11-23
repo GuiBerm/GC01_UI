@@ -1,34 +1,33 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
-import Logout from './components/Logout';
 import ProfileSelection from './components/User/ProfileSelection';
 import MainPage from './components/User/MainPage';
-import AdminPage from './components/Admin/AdminPage';
-import AddActor from './components/Admin/AddActor';
-import AddContent from './components/Admin/AddContent';
-import AddDirector from './components/Admin/AddDirector';
-import ModifyContent from './components/Admin/ModifyContent';
-import ModifyActor from './components/Admin/ModifyActor';
-import ModifyDirector from './components/Admin/ModifyDirector';
-import DeleteContent from './components/Admin/DeleteContent';
-import DeleteActor from './components/Admin/DeleteActor';
-import DeleteDirector from './components/Admin/DeleteDirector';
-import DeleteUser from './components/Admin/DeleteUser';
-import ShowUsers from './components/Admin/ShowUsers';
 import ContentDetails from './components/User/ContentDetails';
+import AdminPage from './components/Admin/AdminPage';
+import AddContent from './components/Admin/AddContent';
+import ModifyContent from './components/Admin/ModifyContent';
+import DeleteContent from './components/Admin/DeleteContent';
 import ShowActor from './components/Admin/ShowActor';
+import AddActor from './components/Admin/AddActor';
+import ModifyActor from './components/Admin/ModifyActor';
+import DeleteActor from './components/Admin/DeleteActor';
 import ShowDirector from "./components/Admin/ShowDirector";
+import AddDirector from './components/Admin/AddDirector';
+import ModifyDirector from './components/Admin/ModifyDirector';
+import DeleteDirector from './components/Admin/DeleteDirector';
+import ShowUsers from './components/Admin/ShowUsers';
 import PlayPage from './components/User/PlayPage';
+import Logout from './components/Logout';
 import SearchPage from './components/User/SearchPage'; // Importar la nueva página
+import DeleteUser from './components/Admin/DeleteUser';
 
 
 
-
-import AdminRoute from './components/AdminRoute'; // Rutas de admin
 import ProtectedRoute from './components/ProtectedRoute'; // Rutas protegidas
-import './styles/styles.css';
+import AdminRoute from './components/AdminRoute'; // Rutas de admin
 import { AuthProvider } from './context/AuthContext';
+import './styles/styles.css';
 
 function App() {
     return (
@@ -47,20 +46,35 @@ function App() {
                             </ProtectedRoute>
                         }
                     />
+                    <Route
+                        path="/user/main"
+                        element={
+                            <ProtectedRoute>
+                                <MainPage />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/user/content/:id"
+                        element={
+                            <ProtectedRoute>
+                                <ContentDetails />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/play/:id"
+                        element={
+                            <ProtectedRoute>
+                                <PlayPage />
+                            </ProtectedRoute>
+                        }
                     />
                     <Route
                         path="/logout"
                         element={
                             <ProtectedRoute>
                                 <Logout />
-                            </ProtectedRoute>
-                        }
-                    />
-                    <Route
-                        path="/user/main"
-                        element={
-                            <ProtectedRoute>
-                                <MainPage />
                             </ProtectedRoute>
                         }
                     />
@@ -83,10 +97,58 @@ function App() {
                         }
                     />
                     <Route
+                        path="/admin/modify-content"
+                        element={
+                            <AdminRoute>
+                                <ModifyContent />
+                            </AdminRoute>
+                        }
+                    />
+                    <Route
+                        path="/admin/delete-content"
+                        element={
+                            <AdminRoute>
+                                <DeleteContent />
+                            </AdminRoute>
+                        }
+                    />
+                    <Route
+                        path="/admin/show-actor"
+                        element={
+                            <AdminRoute>
+                                <ShowActor />
+                            </AdminRoute>
+                        }
+                    />
+                    <Route
                         path="/admin/add-actor"
                         element={
                             <AdminRoute>
                                 <AddActor />
+                            </AdminRoute>
+                        }
+                    />
+                    <Route
+                        path="/admin/modify-actor"
+                        element={
+                            <AdminRoute>
+                                <ModifyActor />
+                            </AdminRoute>
+                        }
+                    />
+                    <Route
+                        path="/admin/delete-actor"
+                        element={
+                            <AdminRoute>
+                                <DeleteActor />
+                            </AdminRoute>
+                        }
+                    />
+                    <Route
+                        path="/admin/show-director"
+                        element={
+                            <AdminRoute>
+                                <ShowDirector />
                             </AdminRoute>
                         }
                     />
@@ -98,25 +160,6 @@ function App() {
                             </AdminRoute>
                         }
                     />
-
-                    <Route
-                        path="/admin/modify-content"
-                        element={
-                            <AdminRoute>
-                                <ModifyContent />
-                            </AdminRoute>
-                        }
-                    />
-
-                    <Route
-                        path="/admin/modify-actor"
-                        element={
-                            <AdminRoute>
-                                <ModifyActor />
-                            </AdminRoute>
-                        }
-                    />
-
                     <Route
                         path="/admin/modify-director"
                         element={
@@ -125,25 +168,6 @@ function App() {
                             </AdminRoute>
                         }
                     />
-
-                    <Route
-                        path="/admin/delete-content"
-                        element={
-                            <AdminRoute>
-                                <DeleteContent />
-                            </AdminRoute>
-                        }
-                    />
-
-                    <Route
-                        path="/admin/delete-actor"
-                        element={
-                            <AdminRoute>
-                                <DeleteActor />
-                            </AdminRoute>
-                        }
-                    />
-
                     <Route
                         path="/admin/delete-director"
                         element={
@@ -152,16 +176,6 @@ function App() {
                             </AdminRoute>
                         }
                     />
-
-                    <Route
-                        path="/admin/delete-user"
-                        element={
-                            <AdminRoute>
-                                <DeleteUser />
-                            </AdminRoute>
-                        }
-                    />
-
                     <Route
                         path="/admin/users"
                         element={
@@ -170,41 +184,14 @@ function App() {
                             </AdminRoute>
                         }
                     />
-
                     <Route
-                        path="/user/content/:id"
-                        element={
-                            <ProtectedRoute>
-                                <ContentDetails />
-                            </ProtectedRoute>
-                        }
-                    />
-                    <Route
-                        path="/admin/show-actor"
+                        path="/admin/delete-user"
                         element={
                             <AdminRoute>
-                                <ShowActor />
+                                <DeleteUser />
                             </AdminRoute>
                         }
                     />
-
-                    <Route
-                        path="/admin/show-director"
-                        element={
-                            <AdminRoute>
-                                <ShowDirector />
-                            </AdminRoute>
-                        }
-                    />
-                    <Route
-                        path="/play/:id"
-                        element={
-                            <ProtectedRoute>
-                                <PlayPage />
-                            </ProtectedRoute>
-                        }
-                    />
-
                     <Route
                         path="/user/search"
                         element={
