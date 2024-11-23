@@ -1,0 +1,85 @@
+/* Asegúrate de que la navbar no cubra el contenido */
+.admin-page {
+    background-color: #141414; /* Fondo oscuro */
+    color: #fff;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    padding-top: 80px; /* Ajusta este valor según la altura de tu navbar */
+}
+
+/* Ajusta el ancho del contenedor */
+.admin-container {
+    max-width: 900px; /* Contenedor más estrecho */
+    margin: 0 auto;
+    padding: 30px 20px; /* Reduce el padding superior e inferior */
+}
+
+/* Título de la página */
+.admin-container h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #e50914; /* Rojo Netflix */
+}
+
+/* Títulos de sección */
+.admin-section h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+/* Secciones */
+.admin-section {
+    margin-bottom: 30px;
+}
+
+/* Contenedor de botones */
+.admin-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Botones individuales */
+.admin-buttons button {
+    flex: 1 1 130px; /* Botones más pequeños */
+    padding: 8px 12px; /* Reduce el padding interno */
+    background-color: #e50914; /* Rojo Netflix */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover para botones */
+.admin-buttons button:hover {
+    background-color: #550006; /* Rojo un poco más brillante */
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .admin-buttons {
+        flex-direction: column;
+    }
+
+    .admin-buttons button {
+        width: 100%;
+    }
+}
+
+/* Ajustes para evitar que la navbar tape el contenido */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que la navbar esté sobre otros elementos */
+}
+
+/* Ajustes para el body si es necesario */
+body {
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,138 @@
+/* src/styles/navBarStyles.css */
+
+/* Barra de navegación */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 90px;
+    background-color: rgba(20, 20, 20, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+/* Contenido de la barra de navegación */
+.navbar__content {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+/* Logo */
+.navbar__logo img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.navbar__logo img:hover {
+    transform: scale(1.1);
+}
+
+/* Contenedor del perfil de usuario */
+.navbar__user {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el nombre y el avatar */
+}
+
+/* Nombre del perfil */
+.navbar__profile-name {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for long text */
+    max-width: 150px; /* Limit width */
+    margin-right: 10px; /* Add space between name and avatar */
+}
+
+/* Avatar del usuario */
+.navbar__user img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.navbar__user img:hover {
+    transform: scale(1.1);
+}
+
+/* Menú desplegable */
+.navbar__dropdown {
+    position: absolute;
+    top: 60px; /* Desplazamiento hacia abajo desde el avatar */
+    right: 0; /* Alineado a la derecha */
+    background-color: rgba(20, 20, 20, 0.95); /* Fondo semi-transparente */
+    border-radius: 8px;
+    padding: 10px 0; /* Espacio interno vertical para separar los enlaces */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    min-width: 150px; /* Ancho mínimo del menú */
+    white-space: nowrap; /* Evitamos que el texto se envuelva */
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
+/* Lista del menú desplegable */
+.navbar__dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Apilar enlaces verticalmente */
+    gap: 10px; /* Espacio entre los enlaces */
+}
+
+/* Enlaces del menú desplegable */
+.navbar__dropdown ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 10px; /* Espaciado interno uniforme */
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block; /* Permite que los enlaces se comporten como bloques alineados */
+    width: 100%; /* Ancho completo para centrar bien */
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
+.navbar__dropdown ul li a:hover {
+    background-color: #e50914;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar__logo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .navbar__user img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .navbar__profile-name {
+        font-size: 14px;
+        max-width: 120px; /* Ajustar el ancho del nombre en pantallas pequeñas */
+    }
+
+    .navbar__dropdown ul li a {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+}
