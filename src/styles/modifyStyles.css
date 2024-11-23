@@ -1,0 +1,220 @@
+/* Contenedor principal */
+.containerLessPadding {
+    margin: 0 auto; /* Centrado horizontal */
+    padding: 20px;
+    max-width: 800px;
+    background-color: #141414; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Sombra */
+    position: relative;
+    top: 90px; /* Ajuste dinámico para el NavBar */
+    z-index: 1;
+}
+
+/* Ajustes globales */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Fondo negro */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Título principal */
+.containerLessPadding h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #e50914; /* Rojo Netflix */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Mensaje de error */
+.containerLessPadding p[style*="color: red"] {
+    background-color: rgba(229, 9, 20, 0.2); /* Fondo rojo translúcido */
+    color: #e50914;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Inputs y textarea */
+.containerLessPadding input[type="text"],
+.containerLessPadding textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #1f1f1f; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+}
+
+/* Botones */
+.containerLessPadding button {
+    background-color: #e50914; /* Fondo rojo Netflix */
+    color: #ffffff; /* Texto blanco */
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.containerLessPadding button:hover {
+    background-color: #f40612; /* Rojo más claro */
+    transform: scale(1.05); /* Efecto de escala */
+}
+
+/* Botones de acción (Editar y Borrar) */
+.action-buttons {
+    display: flex; /* Alineación horizontal */
+    justify-content: space-between; /* Espaciado entre botones */
+
+}
+
+.action-buttons button {
+    background-color: #444; /* Fondo gris oscuro */
+    color: #fff; /* Texto blanco */
+    font-size: 0.9rem; /* Tamaño de texto */
+    font-weight: bold;
+    padding: 8px 15px; /* Tamaño reducido */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 80px; /* Ancho mínimo para uniformidad */
+    text-align: center;
+}
+
+.action-buttons button:hover {
+    background-color: #666; /* Fondo gris más claro */
+    transform: scale(1.05); /* Efecto de escala */
+}
+
+/* Botones individuales */
+.action-buttons .edit-button {
+    background-color: #e50914; /* Azul para editar */
+}
+
+.action-buttons .edit-button:hover {
+    background-color: #b50812; /* Azul más oscuro */
+}
+
+.action-buttons .delete-button {
+    background-color: #e50914; /* Rojo para borrar */
+}
+
+.action-buttons .delete-button:hover {
+    background-color: #b50812; /* Rojo más oscuro */
+}
+
+/* Sección de entradas */
+.input-section {
+    margin-bottom: 20px;
+}
+
+.input-section label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-section input,
+.input-section textarea {
+    margin-bottom: 10px;
+}
+
+/* Contenedor dinámico (solo aparece al buscar contenido o personas) */
+.dynamic-container {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #1f1f1f; /* Fondo más oscuro */
+}
+
+/* Tabla de datos */
+.actors-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: #fff;
+}
+
+.actors-table th, .actors-table td {
+    padding: 10px;
+    border: 1px solid #444;
+    text-align: center;
+}
+
+.actors-table th {
+    background-color: #222; /* Fondo oscuro para encabezados */
+}
+
+.actors-table tr:nth-child(even) {
+    background-color: #1f1f1f; /* Fondo alternativo para filas */
+}
+
+/* Ajuste responsivo */
+@media (max-width: 768px) {
+    .containerLessPadding {
+        padding: 15px;
+    }
+
+    .containerLessPadding h1 {
+        font-size: 2rem;
+    }
+
+    .containerLessPadding button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    .action-buttons {
+        flex-direction: column; /* Botones en columna para pantallas pequeñas */
+    }
+
+    .action-buttons button {
+        width: 100%; /* Botones ocupan todo el ancho */
+    }
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.success-message {
+    color: green;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.search-section {
+    margin-bottom: 20px;
+}
+
+.modify-section .form-group {
+    margin-bottom: 15px;
+}
+
+.modify-section .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.modify-section .form-group input,
+.modify-section .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
