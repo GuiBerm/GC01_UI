@@ -12,7 +12,7 @@
 }(this, function() {
   'use strict';
 
-  var assertEquals = function(expected, actual, ptr) {
+  const assertEquals = function(expected, actual, ptr) {
     if (!ptr)
       ptr = "";
     if (actual === expected)
