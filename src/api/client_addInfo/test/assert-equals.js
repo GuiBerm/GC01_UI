@@ -12,7 +12,7 @@
 }(this, function() {
   'use strict';
 
-  var assertEquals = function(expected, actual, ptr) {
+  const assertEquals = function(expected, actual, ptr) {
     if (!ptr)
       ptr = "";
     if (actual === expected)
@@ -55,8 +55,12 @@
     }
     if (actualKeys.length != expectedKeys.length)
       fail(expectedKeys.length, actualKeys.length, ptr, "key count incorrect;");
-    expectedKeys.sort();
-    actualKeys.sort();
+    expectedKeys.sort(function(a, b) {
+      return a.localeCompare(b);
+    });
+    actualKeys.sort(function(a, b) {
+      return a.localeCompare(b);
+    });
     for (var i = 0; i < expectedKeys.length; i++) {
       if (actualKeys[i] != expectedKeys[i])
         fail(expectedKeys, actualKeys, ptr, "wrong keys;");

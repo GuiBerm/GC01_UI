@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function ContentCard({ id, title, synopsis }) {
     const navigate = useNavigate();
@@ -20,5 +21,11 @@ function ContentCard({ id, title, synopsis }) {
         </div>
     );
 }
+
+ContentCard.propTypes = {
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    title: PropTypes.string,
+    synopsis: PropTypes.string,
+};
 
 export default ContentCard;
