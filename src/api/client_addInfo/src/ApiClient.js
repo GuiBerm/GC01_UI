@@ -150,12 +150,11 @@ export default class ApiClient {
     * @returns {String} The chosen content type, preferring JSON.
     */
     jsonPreferredMime(contentTypes) {
-        for (var i = 0; i < contentTypes.length; i++) {
-            if (this.isJsonMime(contentTypes[i])) {
-                return contentTypes[i];
+        for (const type of contentTypes) {
+            if (this.isJsonMime(type)) {
+                return type;
             }
         }
-
         return contentTypes[0];
     }
 
